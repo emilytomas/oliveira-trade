@@ -20,7 +20,8 @@ def index():
             email = request.form['email']
             password = request.form['password']
             cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute("SELECT * FROM tabelas WHERE email=&s AND senha=%s", (email, password))
+            print(email + password)
+            cursor.execute("SELECT * FROM tabelas WHERE email=%s AND senha=%s", (email, password))
             info = cursor.fetchone()
             print(info)
             if info is not None:
